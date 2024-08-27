@@ -44,21 +44,45 @@ h1 {
 }
 
 input,
-button {
+button{
   font: inherit;
   padding: 6px;
 }
 
+a {
+  font: inherit;
+  padding: 6px;
+  background-color: rgb(244, 244, 244);
+  border: .3mm solid black;
+}
 
-button a,
-button a:visited {
+a,
+a:visited {
   text-decoration: none;
   color: black;
 }
 
-button a:hover,
-button a:focus {
-  background: #333;
-  color: whitesmoke;
+a:hover,
+a:focus {
+  background: #e7e7e7;
+  color: black(0, 0, 0);
   cursor: pointer;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  flex-basis: 25%;
+  font-weight: bold;
+}
+
+.form-group input {
+  flex-basis: 70%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
