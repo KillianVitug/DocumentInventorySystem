@@ -1,0 +1,101 @@
+<%- include('layout/header') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 mx-auto mt-4">
+      <div class="card shadow">
+        <div class="card-header bg-success">
+          <h3 class="text-light">Edit Document</h3>
+        </div>
+        <div class="card-body p-3">
+          <form
+            action="/update/<%= document.id  %>"
+            method="post"
+            id="edit-form"
+            enctype="multipart/form-data"
+          >
+            <div class="mb-3">
+              <label for="doc-type">Type:</label>
+              <input
+                type="text"
+                id="doc-type"
+                name="type"
+                class="form-control form-control-lg"
+                value="<%= document.type %>"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="doc-name">Name:</label>
+              <input
+                type="text"
+                id="doc-name"
+                class="form-control form-control-lg"
+                name="name"
+                value="<%= document.name %>"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="doc-description">Description:</label>
+              <input
+                type="text"
+                id="doc-description"
+                class="form-control form-control-lg"
+                name="description"
+                value="<%= document.description %>"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="doc-company">Company:</label>
+              <input
+                type="text"
+                id="doc-company"
+                class="form-control form-control-lg"
+                name="company"
+                value="<%= document.company %>"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="doc-uploaded-At">UpdatedAt:</label>
+              <input
+                type="datetime-local"
+                id="doc-uploaded-At"
+                class="form-control form-control-lg"
+                name="uploadedAt"
+                value="<%= document.uploadedAt %>"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="doc-imageUrl">Image:</label>
+              <input
+                type="file"
+                id="doc-imageUrl"
+                class="form-control form-control-lg"
+                name="imageUrl"
+              />
+              <img
+                src="<%= document.imageUrl %>"
+                width="100"
+                class="img-thumbnail mt-1"
+              />
+            </div>
+            <input
+              type="hidden"
+              name="old_image"
+              value="<%= document.imageUrl %>"
+            />
+            <div class="mb-3 d-grid"></div>
+            <button type="submit" name="submit " class="btn btn-success btn-lg">
+              Update Document
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('layout/footer') %>
