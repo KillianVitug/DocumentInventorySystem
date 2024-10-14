@@ -31,7 +31,11 @@
               </div>
               <div class="mb-3">
                 <label for="doc-imageUrl">Image:</label>
-                <input type="file" id="doc-imageUrl" class="form-control form-control-lg" name="imageUrl" placeholder="Upload Document Image" required />
+                <input type="file" id="doc-imageUrl" class="form-control form-control-lg" name="imageUrl[]" placeholder="Upload Document Image" multiple required />
+              </div>
+              <div class="mb-3">
+                <label for="doc-imageUrl">Image:</label>
+                <input type="file" id="doc-imageUrl" class="form-control form-control-lg" name="imageUrl[]" placeholder="Upload Document Image" multiple />
               </div>
               <div class="mb-3 d-grid"></div>
               <button type="submit" name="submit "class="btn btn-primary btn-lg">Save Document</button>

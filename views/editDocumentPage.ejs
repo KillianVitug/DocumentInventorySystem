@@ -9,7 +9,7 @@
         </div>
         <div class="card-body p-3">
           <form
-            action="/update/<%= document.id  %>"
+            action="/updateDocumentPage/<%= document.id  %>"
             method="post"
             id="edit-form"
             enctype="multipart/form-data"
@@ -69,23 +69,59 @@
               />
             </div>
             <div class="mb-3">
-              <label for="doc-imageUrl">Image:</label>
+              <label for="doc-imageUrl">Image/s:</label>
               <input
                 type="file"
                 id="doc-imageUrl"
                 class="form-control form-control-lg"
-                name="imageUrl"
+                name="imageUrl[]"
+                multiple
               />
+            </div>
+            <div class="mb-3">
+              <label for="doc-imageUrl">Image/s:</label>
+              <input
+                type="file"
+                id="doc-imageUrl"
+                class="form-control form-control-lg"
+                name="imageUrl[]"
+                multiple
+              />
+            </div>
+            <div class="mb-3">
+              <% if (Array.isArray(document.imageUrl)) { %> <%
+              document.imageUrl.forEach(function(image) { %> <% if
+              (image.includes('uploads')) { %>
+              <!-- If 'uploads' is already in the image path, use it directly -->
+              <img src="/<%= image %>" width="100" class="img-thumbnail mt-1" />
+              <% } else { %>
+              <!-- If 'uploads' is not in the image path, prepend it -->
               <img
-                src="<%= document.imageUrl %>"
+                src="/uploads/<%= image %>"
                 width="100"
                 class="img-thumbnail mt-1"
               />
+              <% } %> <% }); %> <% } else if (document.imageUrl) { %> <% if
+              (document.imageUrl.includes('uploads')) { %>
+              <!-- If 'uploads' is already in the image path, use it directly -->
+              <img
+                src="/<%= document.imageUrl %>"
+                width="100"
+                class="img-thumbnail mt-1"
+              />
+              <% } else { %>
+              <!-- If 'uploads' is not in the image path, prepend it -->
+              <img
+                src="/uploads/<%= document.imageUrl %>"
+                width="100"
+                class="img-thumbnail mt-1"
+              />
+              <% } %> <% } %>
             </div>
             <input
               type="hidden"
-              name="old_image"
-              value="<%= document.imageUrl %>"
+              name="old_images"
+              value="<%= JSON.stringify(document.imageUrl) %>"
             />
             <div class="mb-3 d-grid"></div>
             <button type="submit" name="submit " class="btn btn-success btn-lg">

@@ -19,6 +19,7 @@ td {
   border-collapse: collapse;
   min-width: 95.5%;
   padding: 6px;
+  margin: 1.5rem;
 }
 
 .container {
@@ -44,7 +45,7 @@ h1 {
 }
 
 input,
-button{
+button {
   font: inherit;
   padding: 6px;
 }
@@ -53,7 +54,7 @@ a {
   font: inherit;
   padding: 6px;
   background-color: rgb(244, 244, 244);
-  border: .3mm solid black;
+  border: 0.3mm solid black;
 }
 
 a,

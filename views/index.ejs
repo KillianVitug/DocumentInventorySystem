@@ -11,13 +11,13 @@
           class="btn-close"
           type="button"
           data-bs-dismiss="alert"
-          aria-lable="close"
+          aria-label="close"
         ></button>
         <strong><%= message.message %></strong>
       </div>
       <% } %>
       <div class="table-responsive">
-        <% if (documents != '') { %>
+        <% if (documents && documents.length > 0) { %>
         <table class="table table-striped text-center my-2">
           <thead>
             <tr class="table-dark">
@@ -32,24 +32,29 @@
             </tr>
           </thead>
           <tbody>
-            <% documents.forEach((row, index) => { %>
-            <tr class="align-middle">
+            <% documents.forEach(function(doc, index) { %>
+            <tr>
               <td><%= index %></td>
-              <td><%= row.type %></td>
-              <td><%= row.name %></td>
-              <td><%= row.description %></td>
-              <td><%= row.company %></td>
-              <td><%= row.uploadedAt %></td>
+              <td><%= doc.type %></td>
+              <td><%= doc.name %></td>
+              <td><%= doc.description %></td>
+              <td><%= doc.company %></td>
               <td>
-                <img
-                  src="<%= row.imageUrl %>"
-                  width="50"
-                  class="img-thumbnail"
-                />
+                <%= new Date(doc.uploadedAt).toLocaleString('en-US', { timeZone:
+                'Asia/Manila', weekday: 'short', year: 'numeric', month:
+                'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
+                second: '2-digit', hour12: true, }) %>
               </td>
               <td>
-                <a href="/viewDocumentPage/<%= row.id %>" class="text-success"
-                  >View</a
+                <a href="/downloadPdf/<%= doc._id %>" class="btn btn-primary"
+                  >Download PDF</a
+                >
+              </td>
+              <td>
+                <a
+                  href="/viewDocumentPage/<%= doc._id %>"
+                  class="btn btn-success"
+                  >View Document</a
                 >
               </td>
             </tr>

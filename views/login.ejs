@@ -1,0 +1,21 @@
+<%- include('layout/viewHeader') %>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <!-- Notice: No action attribute on the form -->
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="user" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="pwd" required />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="/register">Register here</a></p>
+  </div>
+
+</body>
+<%- include('layout/viewFooter') %>
