@@ -61,35 +61,32 @@ export default function Delivery() {
             try {
               const purchaseResponse = await axios.get(
                 'http://192.168.23.67:3500/v2/api/purchases/getLastThreeByPrincipalName',
-                { serverId: server.id, principalName },
-                { withCredentials: false }
+                {
+                  params: {
+                    serverId: server.id, // Include server ID as query param
+                    principalName: principalName, // Include principal name as query param
+                  },
+                  withCredentials: false,
+                }
               );
 
-              // Store purchases for each server ID
-              newPurchasesByServer[server.id] = purchaseResponse.data.map(
-                (purchase) => ({
-                  supplierName: purchase.supplierName,
-                  receivedDate: purchase.receivedDate,
-                })
-              );
+              // Store the purchase results by server
+              newPurchasesByServer[server.id] = purchaseResponse.data;
             } catch (error) {
               console.error(
                 `Error fetching purchases for server ${server.id}:`,
                 error
               );
-              newPurchasesByServer[server.id] = []; // Set empty array for offline servers
             }
           })
         );
 
         setPurchasesByServer(newPurchasesByServer);
       } catch (error) {
-        console.error('Error processing server purchases:', error);
+        console.error('Error during search:', error);
       } finally {
-        setLoading(false); // Set loading to false after completing the search
+        setLoading(false); // Stop the loading state after search completes
       }
-    } else {
-      console.log('No principal name provided');
     }
   };
 
@@ -164,19 +161,19 @@ export default function Delivery() {
             </tr>
           </thead>
           <tbody>
-            {loading ? ( // Display loading state
+            {loading ? (
               <tr>
                 <td colSpan="3">Loading...</td>
               </tr>
             ) : (
               servers.map((server) => {
                 const purchases = purchasesByServer[server.id] || [];
-                const combinedPurchases = purchases
-                  .map(
-                    (purchase) =>
-                      `${purchase.supplierName} - ${purchase.receivedDate}`
-                  )
-                  .join(', ');
+                const combinedPurchases = purchases.map((purchase, index) => (
+                  <span key={index}>
+                    {purchase.name} - <strong>{purchase.purchasedate}</strong>
+                    {index < purchases.length - 1 && ', '}
+                  </span>
+                ));
 
                 return (
                   <tr key={server.id}>
