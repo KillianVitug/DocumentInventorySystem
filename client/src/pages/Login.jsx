@@ -66,14 +66,20 @@ export default function Login() {
         toast.error(responseData.error);
       } else {
         // Store employeeId and serverId in cookies
-        document.cookie = `employeeId=${responseData.employeeId}; path=/`;
+        console.log('Login successful:', responseData);
+        document.cookie = `employeeId=${responseData.employeeid}; path=/`;
         document.cookie = `serverId=${responseData.serverId}; path=/`;
+
+        localStorage.setItem('user', JSON.stringify({
+          employeeId: responseData.employeeid,
+          serverId: responseData.serverId
+        }));
 
         // Dispatch the user information
         dispatch({
           type: 'LOGIN',
           payload: {
-            employeeId: responseData.employeeId,
+            employeeId: responseData.employeeid,
             serverId: responseData.serverId,
           },
         });
