@@ -13,7 +13,7 @@ const documentsRoutes = require('./routes/api/documents');
 const PORT = process.env.PORT || 3500;
 
 //Connect DB
-connectDB();
+// connectDB();
 
 app.use(credentials); // Handle credentials before CORS
 
@@ -63,6 +63,7 @@ app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 app.use('/documents', documentsRoutes);
 
-mongoose.connection.once('open', () => {
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
