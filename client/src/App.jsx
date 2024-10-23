@@ -1,18 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import Documents from './pages/Documents';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
-import Delivery from './pages/Delivery';
-import ProtectedRoute from './components/ProtectedRoute';
-import AddDocumentForm from './components/AddDocumentForm';
-import ViewDocument from './components/ViewDocument';
-import EditDocumentForm from './components/EditDocumentForm';
+import allRoutes from './routes'; // Import all routes from the centralized dynamic import
+// import Documents from './pages/Documents';
+// import Register from './pages/Auth/Register';
+// import Dashboard from './pages/Dashboard';
+// import Login from './pages/Auth/Login';
+// import Delivery from './pages/Delivery';
+// import ProtectedRoute from './components/ProtectedRoute';
+// import AddDocumentForm from './components/AddDocumentForm';
+// import ViewDocument from './components/ViewDocument';
+// import EditDocumentForm from './components/EditDocumentForm';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { UserContextProvider } from './context/userContext';
 import { DocumentsContextProvider } from './context/documentContext';
+
 
 axios.defaults.baseURL = 'http://localhost:3500';
 axios.defaults.withCredentials = true;
@@ -25,7 +27,7 @@ function App() {
         <div className="pages">
           <NavBar />
           <Routes>
-            {/* Ensure NavBar is part of the layout */}
+            {/* Ensure NavBar is part of the layout
             <Route path="/login" element={<Login />} />
             <Route
               path="/dashboard"
@@ -82,7 +84,8 @@ function App() {
                   <Delivery />
                 </ProtectedRoute>
               }
-            />
+            /> */}
+            {allRoutes}  {/* Render all routes dynamically */}
           </Routes>
         </div>
       </DocumentsContextProvider>

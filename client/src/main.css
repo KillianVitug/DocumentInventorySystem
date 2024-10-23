@@ -1,12 +1,12 @@
-/* google font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+/* google font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap'); */
 
 /* layout */
-:root {
+/* :root {
   --primary: #1aac83;
   --error: #e7195a;
-}
-body {
+} */
+/* body {
   background: #f1f1f1;
   margin: 0;
   font-family: 'Poppins';
@@ -90,6 +90,34 @@ a:focus {
   background: #e7e7e7;
   color: black(0, 0, 0);
   cursor: pointer;
+} */
+
+
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+/* layout variables */
+:root {
+  --primary: #1aac83; /* Use these to customize Bootstrap components */
+  --error: #e7195a;
 }
 
+body {
+  background: #f1f1f1;
+  margin: 0;
+  font-family: 'Poppins';
+}
 
+/* Custom error styling, keep these */
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+input.error {
+  border: 1px solid var(--error);
+}

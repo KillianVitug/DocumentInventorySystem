@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import { apiWithCredentials } from '../../utils/api';
 
 export default function Delivery() {
   const [supplierName, setSupplierName] = useState('');
@@ -16,15 +17,19 @@ export default function Delivery() {
       try {
         const [suppliersResponse, principalsResponse, serversResponse] =
           await Promise.all([
-            axios.get('http://192.168.23.67:3500/v2/api/suppliers', {
-              withCredentials: false,
-            }),
-            axios.get('http://192.168.23.67:3500/v2/api/principals', {
-              withCredentials: false,
-            }),
-            axios.get('http://192.168.23.67:3500/v2/api/servers', {
-              withCredentials: false,
-            }),
+            apiWithCredentials.get('/v2/api/suppliers'),
+            apiWithCredentials.get('/v2/api/principals'),
+            apiWithCredentials.get('/v2/api/servers'),
+
+            // axios.get('http://192.168.23.67:3500/v2/api/suppliers', {
+            //   withCredentials: false,
+            // }),
+            // axios.get('http://192.168.23.67:3500/v2/api/principals', {
+            //   withCredentials: false,
+            // }),
+            // axios.get('http://192.168.23.67:3500/v2/api/servers', {
+            //   withCredentials: false,
+            // }),
           ]);
 
         // Map supplier names for the autocomplete dropdown
@@ -59,16 +64,25 @@ export default function Delivery() {
         await Promise.all(
           servers.map(async (server) => {
             try {
-              const purchaseResponse = await axios.get(
-                'http://192.168.23.67:3500/v2/api/purchases/getLastThreeByPrincipalName',
+              const purchaseResponse = await apiWithCredentials.get(
+                '/v2/api/purchases/getLastThreeByPrincipalName',
                 {
                   params: {
                     serverId: server.id, // Include server ID as query param
                     principalName: principalName, // Include principal name as query param
                   },
-                  withCredentials: false,
                 }
               );
+              // const purchaseResponse = await axios.get(
+              //   'http://192.168.23.67:3500/v2/api/purchases/getLastThreeByPrincipalName',
+              //   {
+              //     params: {
+              //       serverId: server.id, // Include server ID as query param
+              //       principalName: principalName, // Include principal name as query param
+              //     },
+              //     withCredentials: false,
+              //   }
+              // );
 
               // Store the purchase results by server
               newPurchasesByServer[server.id] = purchaseResponse.data;

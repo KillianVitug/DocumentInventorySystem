@@ -1,7 +1,9 @@
 import { useContext } from 'react';
-import { useUserContext } from '../hooks/useUserContext';
+// import { useUserContext } from '../hooks/useUserContext';
+import { useUserContext } from '../../hooks/useUserContext';
 import { useNavigate } from 'react-router-dom';
-import { useLogout } from '../hooks/useLogout'; // Import the useLogout hook
+// import { useLogout } from '../hooks/useLogout'; // Import the useLogout hook
+import { useLogout } from '../../hooks/useLogout'; // Import the useLogout hook
 
 export default function Dashboard() {
   const { user } = useUserContext();

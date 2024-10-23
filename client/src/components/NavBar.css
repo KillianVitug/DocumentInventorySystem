@@ -1,0 +1,50 @@
+/* Mega Menu Styles */
+
+.mega-menu-container {
+    padding: 20px;
+    background-color: #f8f9fa; /* Light gray background */
+    border: 1px solid #ddd;
+    position: absolute; /* Position the mega menu correctly */
+    top: 100%;
+    left: 0; /* Start from the left side of the dropdown */
+    right: 0; /* Stretch to the right, ensuring full width */
+    width: auto; /* Allow width to be automatically calculated */
+    max-width: 1200px; /* Set a maximum width to prevent it from becoming too large */
+    margin: 0 auto; /* Center the mega menu within its container */
+    z-index: 1000;
+    display: none; /* Initially hidden */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for better visibility */
+    overflow-x: auto; /* Allow scrolling if content overflows horizontally */
+  }
+  
+  /* Show mega menu on hover or focus */
+  .mega-menu:hover .mega-menu-container,
+  .mega-menu:focus-within .mega-menu-container {
+    display: block; /* Show the mega menu on hover or focus */
+  }
+  
+  /* Mega Menu Titles Styling */
+  .mega-menu-title {
+    font-weight: 600;
+    color: #1aac83;
+    margin-bottom: 10px;
+  }
+  
+  ul.list-unstyled {
+    padding-left: 0;
+  }
+  
+  ul.list-unstyled li {
+    margin-bottom: 5px; /* Add some spacing between links for better readability */
+  }
+  
+  /* Responsive Adjustments for Smaller Screens */
+  @media (max-width: 768px) {
+    .mega-menu-container {
+      width: 90vw; /* Ensure the mega menu doesn't exceed 90% of the viewport width */
+      padding: 10px;
+      left: 5vw; /* Center the menu in the viewport with a small margin */
+      right: auto; /* Remove the right alignment */
+    }
+  }
+  

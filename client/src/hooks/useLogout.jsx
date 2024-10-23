@@ -9,7 +9,7 @@ export const useLogout = () => {
   const logout = async () => {
     try {
       // Call the backend API to handle the logout and clear the token
-      await axios.post('/logout', {}, { withCredentials: false });
+      // await axios.post('/logout', {}, { withCredentials: false });
 
       // Remove user from local storage
       localStorage.removeItem('user');
