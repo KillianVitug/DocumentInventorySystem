@@ -41,13 +41,19 @@ export default function NavBar() {
             <NavDropdown.Item as={Link} to="/bir-permits">
               Inventory Adjustments
             </NavDropdown.Item>
-          </NavDropdown>
-          <NavDropdown title="Company" id="company-dropdown">
-            <NavDropdown.Item as={Link} to="/bir-permit-types">
-              BIR Permit Types
+            <NavDropdown.Item as={Link} to="/bir-permits">
+              Journal Entries
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/bir-permits">
-              BIR Permits
+              Auto Journal Entries
+            </NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown title="Reports" id="company-dropdown">
+            <NavDropdown.Item as={Link} to="/bir-permit-types">
+              Inventory
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/bir-permits">
+              Finance
             </NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="Documents" id="company-dropdown">
