@@ -53,6 +53,9 @@ export default function NavBar() {
               Inventory
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/bir-permits">
+              Sales
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/bir-permits">
               Finance
             </NavDropdown.Item>
           </NavDropdown>
